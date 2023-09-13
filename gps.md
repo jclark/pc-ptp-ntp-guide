@@ -1,6 +1,17 @@
 # GPS receivers
 
+My top recommendation is the BG7TBL TS-1: this provides a high-quality timing receiver, in a form that is convenient to
+use with a PC, at an inexpensive price.
+
 ## BG7TBL TS-1
+
+This became available in 2023. Internally, it uses the u-blox LEA-M8T module.
+
+I got mine on [AliExpress](https://www.aliexpress.com/item/1005005753445408.html) for $77. It's also available on eBay.
+
+Many GPS receivers being sold from China are fakes. But I am confident the one I got is not. The idea behind this product is
+to repurpose timing modules originally manufactured for Huawei cellular base stations. These timing modules
+are [available on eBay](https://www.ebay.com/itm/333619130232) for about $50 or less, but they require some hard-to-find parts to wire up properly.
 
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/9a823dfd-88b9-40d5-9f61-494286e0f4f7)
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/566971aa-53ad-4f66-a5a1-9ce91d0d62c9)
