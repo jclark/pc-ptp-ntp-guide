@@ -27,5 +27,8 @@ This is a dual band (L1/L2) module. It's a step up in both price and performance
 
 Note that this needs a dual band antenna for best performance.
 
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/baf3fb0c-8c73-48d3-aa22-6b9aa61ddcf7)
+
+
 
 
