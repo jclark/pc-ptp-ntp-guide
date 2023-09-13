@@ -28,7 +28,7 @@ Hardware info:
 * NIC
 * GPS
 * server PC
-* PTM
+* [PTM](ptm.md)
 
 Software info:
 * verify OS support
