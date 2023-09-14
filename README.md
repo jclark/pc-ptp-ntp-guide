@@ -25,15 +25,23 @@ The particular Linux distribution doesn't matter too much: I've tried Debian, Ub
 In selecting hardware, there's a new feature called Precision Time Measurement (PTM), which is very useful for this application. It allows for precise synchronization between the system clock and the PHC.
 
 Hardware selection and assembly:
-* NIC
-* GPS
+* [GPS receivers](gps.md) that work well for this application
+* [NICs with PPS input](pps-nics.md), and how to connect to a GPS
 * server PC
-* [PTM](ptm.md)
+* more about [PTM](ptm.md) 
 
 Server software configuration:
 * [Verify](verify.md) that the NIC and GPS are properly working with the operating system.
-* chrony
-* ptp4l
+* [chrony](chrony.md) - how to set up chrony
+* linuxptp
+
+
+## References
+https://chrony-project.org/examples.html#_server_using_reference_clock_on_nic
+https://linuxptp.sourceforge.net/i210-rework/i210-rework.html
+https://github.com/AaronWebster/igb-pps-guide
+
+
 
 
 
