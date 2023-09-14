@@ -7,6 +7,8 @@ use with a PC, at an inexpensive price.
 
 This became available in 2023. Internally, it uses the u-blox LEA-M8T module. This is a single band module.
 
+It provides a PPS signal on an SMA connector at 3.3V (as required by the i210/i225).
+
 I got mine on [AliExpress](https://www.aliexpress.com/item/1005005753445408.html) for $77. It's also available on eBay.
 
 Many GPS receivers being sold from China are fakes. But I am confident the one I got is not. The idea behind this product is
