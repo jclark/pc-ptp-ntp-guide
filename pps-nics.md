@@ -4,7 +4,7 @@
 
 The most commonly used network card with a PPS input is the [Intel I210-T1](https://www.intel.com/content/www/us/en/products/sku/68668/intel-ethernet-server-adapter-i210t1/specifications.html). Although it's a 10-year old product, it remains an excellent choice.
 
-As well as the original Intel cards, there are OEM version that work fine and
+As well as the original Intel cards, there are OEM versions that work fine and
 are cheaper, but you need to choose ones that have the same layout as the Intel
 original and include the 6-pin SDP header. The only visual difference betweens
 between the OEM version and the Intel original are
@@ -56,4 +56,4 @@ These are quite a few expensive options (more than $1000). They all have a SMA c
 * Intel E810-XXVDA4T
 * [OCP-TAP Timecard](https://store.timebeat.app/collections/ocp-tap)
 * NVidia [ConnectX-6 DX](https://docs.nvidia.com/networking/display/ConnectX6DxEN/Introduction) models with SMA PPS input eg MCX623106PN-CDAT or MCX623106TN-CDAT
-* Cisco Nexus K35-S https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/nexus-smartnic/datasheet-c78-743825.html
+* [Cisco Nexus K35-S](https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/nexus-smartnic/datasheet-c78-743825.html)
