@@ -24,14 +24,14 @@ The particular Linux distribution doesn't matter too much: I've tried Debian, Ub
 
 In selecting hardware, there's a new feature called Precision Time Measurement (PTM), which is very useful for this application. It allows for precise synchronization between the system clock and the PHC.
 
-Hardware info:
+Hardware selection and assembly:
 * NIC
 * GPS
 * server PC
 * [PTM](ptm.md)
 
-Software info:
-* verify OS support
+Server software configuration:
+* [Verify](verify.md) that the NIC and GPS are properly working with the operating system.
 * chrony
 * ptp4l
 
