@@ -31,6 +31,9 @@ Then use a short cable from the hole in the bracket to i210:
 this is called an [SMA female bulhead to Dupont female RG316 test cable](https://www.ebay.com/itm/275501976151). Then you can connect the GPS receiver using a normal SMA male to SMA male
 cable.
 
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/1c7e6b94-62c1-41f1-8697-64ddf9322a3c)
+
+
 ## i225
 
 The i225-T1 card provides access to software-defined pins similar to the i210,
