@@ -10,6 +10,9 @@ while being only 2L in size.
 
 It also has an M.2 wifi slot.
 
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/36502817-59e6-4420-87a9-bb10070366fd)
+
+
 ## Lenovo tiny
 
 Some Lenovo tiny PCs have a slot into which you can put a riser that accepts
