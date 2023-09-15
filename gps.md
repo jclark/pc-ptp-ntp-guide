@@ -15,6 +15,9 @@ The power connector is standard 5.5x2.1mm DC barrel connnector, which accepts 5V
 the board doesn't have a battery, so powering it from the PC over USB means that
 a PC power cycle requires a cold start of the GPS.
 
+It provides RS232 DB9 female connection to the UART port on the LEA-M8T. It can be connected
+to a PC that does not have a serial port by using an USB 2.0 to RS232 DB9 male converter cable.
+
 Many GPS receivers being sold from China are fakes. But I am confident the one I got is not. The idea behind this product is
 to repurpose timing modules originally manufactured for Huawei cellular base stations. These timing modules
 are [available on eBay](https://www.ebay.com/itm/333619130232) for about $50 or less, but they require some hard-to-find parts to wire up properly.
@@ -30,6 +33,8 @@ The [simpleRTK2B M.2](https://www.ardusimple.com/product/simplertk2b-m-2/) fits 
 
 The module is a u-blox ZED-F9P. It's designed for precise positioning (RTK), but it also supports time mode.
 This is a dual band (L1/L2) module. It's a step up in both price and performance from the LEA-M8T used in the TS-1.
+
+The USB port on the ZED-F9P will be exposed as a USB device in Linux, typically `/dev/ttyACM0`.
 
 Note that this needs a dual band antenna for best performance.
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/e5f35ce8-30de-4bff-a653-6cb765f83cda)
