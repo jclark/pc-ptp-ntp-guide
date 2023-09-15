@@ -10,6 +10,9 @@ while being only 2L in size.
 
 It also has an M.2 wifi slot.
 
+This shows a T740 with a cable attached to the i210, before I plug the i210 into the
+PCIe slot. The cable goes through the hole at the bottom of the bracket.
+
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/36502817-59e6-4420-87a9-bb10070366fd)
 
 
