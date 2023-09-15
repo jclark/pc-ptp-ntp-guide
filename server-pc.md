@@ -15,8 +15,15 @@ It also has an M.2 wifi slot.
 Some Lenovo tiny PCs have a slot into which you can put a riser that accepts
 low-profile PCIe cards, but without their bracket.
 
-I recommend buying a second-hand M720q. These are widely available.
-Try to get one without a wifi card.
+I recommend buying a second-hand M720q.
+These are widely available.
+Try to get one without a wifi card, because we will use the wifi antenna hole
+to connect with the GPS or i210 card.
+It should also work with an M920q or M920x.
+
+The M720q has space for a 2.5" disk (usually an SSD), but you cannot use
+this at the same time as a riser. So you will need to remove the
+2.5" disk and install an M.2 drive (there is space for one under the bottom cover).
 
 You will also need to get a kit which has the riser, a cover plate with an opening
 (sometimes sold as a baffle or a bezel) and some screws. The Lenovo
