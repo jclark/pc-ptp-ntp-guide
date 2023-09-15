@@ -26,7 +26,7 @@ In selecting hardware, there's a new feature called Precision Time Measurement (
 
 Hardware selection and assembly:
 * [GPS receivers](gps.md) that work well for this application
-* [NICs with PPS input](pps-nics.md), and how to connect them to a GPS receiver
+* [NICs with PPS input](pps-nic.md), and how to connect them to a GPS receiver
 * [PCs that work well as time servers](server-pc.md)
 * more about [PTM](ptm.md) 
 
