@@ -11,6 +11,10 @@ It provides a PPS signal on an SMA connector at 3.3V (as required by the i210/i2
 
 I got mine on [AliExpress](https://www.aliexpress.com/item/1005005753445408.html) for $77. It's also available on eBay.
 
+The power connector is standard 5.5x2.1mm DC barrel connnector, which accepts 5V-12V and requires only 0.3A, so can easily be powered via a dumb USB to DC 5V cable. However,
+the board doesn't have a battery, so powering it from the PC over USB means that
+a PC power cycle requires a cold start of the GPS.
+
 Many GPS receivers being sold from China are fakes. But I am confident the one I got is not. The idea behind this product is
 to repurpose timing modules originally manufactured for Huawei cellular base stations. These timing modules
 are [available on eBay](https://www.ebay.com/itm/333619130232) for about $50 or less, but they require some hard-to-find parts to wire up properly.
