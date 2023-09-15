@@ -80,10 +80,10 @@ to GND.
 The i225-T1 card provides access to software-defined pins similar to the i210,
 but the adapter just provides though-hole solder pads rather than physical pins;
 so in order to make use of these a header needs to be soldered on.
-
 Timebeat sells a [i225-T1](https://store.timebeat.app/products/intel-i225-t1-with-sdp-headers-and-a-u-fl-breakout-board) with the header already soldered on and a breakout board providing U.FL connectors.
+
 The big advantage of the i225 is that it supports [PTM](ptm.md)
-when used in a suitable motherboard.
+when used with a suitable motherboard.
 
 ## i226
 
