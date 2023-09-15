@@ -10,7 +10,7 @@ using an HP thin client or a Lenovo Tiny desktop.
 The HP T740 thin client is [available on eBay](https://www.ebay.com/itm/145079601430)
 for about $200. It is unusual in that it has single PCIe slot
 that accepts standard low-profile cards on a standard low-profile bracket,
-while being only 2L in size. It also has an M.2 wifi slot.
+while being only 2.2L in size. It also has an M.2 wifi slot.
 
 There's a [review on ServeTheHome](https://www.servethehome.com/hp-t740-thin-client-review-tinyminimicro-with-pcie-slot-amd-ryzen/).
 
@@ -73,4 +73,3 @@ cut off the corner of a stripboard.
 
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/baf3fb0c-8c73-48d3-aa22-6b9aa61ddcf7)
 
-## Pre-built PC
