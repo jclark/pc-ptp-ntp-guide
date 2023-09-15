@@ -1,24 +1,35 @@
 # Server PCs
 
+Any old spare PC will work fine provided it has a spare PCIe slot.
 
-## HP thin client
+In the following sections, I describe two ways of building something much smaller than a normal PC,
+using an HP thin client or a Lenovo Tiny desktop.
+
+## HP Thin Client
 
 The HP T740 thin client is [available on eBay](https://www.ebay.com/itm/145079601430)
 for about $200. It is unusual in that it has single PCIe slot
 that accepts standard low-profile cards on a standard low-profile bracket,
-while being only 2L in size.
+while being only 2L in size. It also has an M.2 wifi slot.
 
-It also has an M.2 wifi slot.
+There's a [review on ServeTheHome](https://www.servethehome.com/hp-t740-thin-client-review-tinyminimicro-with-pcie-slot-amd-ryzen/).
 
-This shows a T740 with a cable attached to the i210, before I plug the i210 into the
-PCIe slot. The cable goes through the hole at the bottom of the bracket.
+It comes with an eMMC card, but I wasn't able to boot from this after installing Linux.
+I installed an inexpensive M.2 NVMe card in place of the eMMC card and that worked fine.
+
+I had a problem with the BIOS not detecting the CPU fan on boot.
+This was fixed by upgrading the BIOS.
+Upgrading the BIOS required downloading and running a program on Windows 10 (Windows 11 didn't work) to create a disk,
+which the BIOS could use to update itself.
+
+This shows a T740 with a cable attached to the i210, before plugging the i210 into the
+PCIe slot.
 
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/36502817-59e6-4420-87a9-bb10070366fd)
 
+## Lenovo Tiny desktop
 
-## Lenovo tiny
-
-Some Lenovo tiny PCs have a slot into which you can put a riser that accepts
+Some Lenovo Tiny desktops have a slot into which you can put a riser that accepts
 low-profile PCIe cards, but without their bracket.
 
 I recommend buying a second-hand M720q.
@@ -26,6 +37,8 @@ These are widely available.
 Try to get one without a wifi card, because we will use the wifi antenna hole
 to connect with the GPS or i210 card.
 It should also work with an M920q or M920x.
+
+There's a [review of the M720q on ServeTheHome](https://www.servethehome.com/lenovo-thinkcentre-m720q-tiny-compact-pc-review/).
 
 The M720q has space for a 2.5" disk (usually an SSD), but you cannot use
 this at the same time as a riser. So you will need to remove the
