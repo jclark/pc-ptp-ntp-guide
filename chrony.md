@@ -126,7 +126,7 @@ Now add this line to /etc/chrony.conf:
 refclock SOCK /run/chrony.clk.ttyUSB0.sock poll 3 offset 0 noselect refid UART
 ```
 
-There's a lot packed into these two lines. Consider the refclock SOCK line first.
+There's a lot packed into this line.
  * When gpsd starts reading from /dev/ttyX, it checks for the existence of the socket /run/chrony.clk.ttyX.sock; if this socket exists, then it will send the messages with the current date-time derived from messages received from the GPS over this socket.
  * The refclock SOCK line causes chrony to create the socket in the place where gpsd expects. Chrony will then read date-time messages from that.
  * The `refid UART` option gives the name `UART` to this reference clock.
