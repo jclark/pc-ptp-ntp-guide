@@ -50,11 +50,15 @@ sudo cat /sys/class/ptp/ptp0/fifo
 
 The `cat` command should output a line, which represents a timestamp of an input pulse and consists of 3 numbers: channel number, which is zero in this case, seconds count, nanoseconds count. Repeating the last command will give lines for successive input timestamps.
 
+If `cat` outputs nothing, then it's not working.
+
+### Pulse width
+
 The i210 and i225 NICs have the quirk that they timestamp both the rising and falling edges of the every pulse. This means that a PPS signal will result
 in two timestamps per second. Most GPS receivers default to a pulse width of 0.1s, which means that you should see consecutive timestamps separated alternately
-by 0.1s and 0.9s (i.e. 100,000,000 and 900,000,000 nanoseconds). Chrony needs to know the pulse width.
-
-If `cat` outputs nothing, then it's not working.
+by 0.1s and 0.9s (i.e. 100,000,000 and 900,000,000 nanoseconds).
+By looking at the output of `cat` you can determine what the pulse width is.
+Both chrony or ts2phc need to be configured with the pulse width for NICs that timestamp both edges.
 
 ## Verify GPS
 
