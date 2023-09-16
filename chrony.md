@@ -103,6 +103,9 @@ Requires=chronyd.service
 
 This ensures that when chronyd gets restarted, gpsd will also get restarted.
 
+TODO: Occasionally chrony doesn't receive messages from gpsd. I think what is
+happening is that gpsd is started before chrony has had time to create the sockets.
+
 Now do:
 ```
 sudo systemctl daemon-reload
