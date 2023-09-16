@@ -36,6 +36,10 @@ This is a dual band (L1/L2) module. It's a step up in both price and performance
 
 The USB port on the ZED-F9P will be exposed as a USB device in Linux, typically `/dev/ttyACM0`.
 
+If you are using the ZED-F9P purely for timing purposes, you might want to downgrade to firmware
+HPG 1.12, since that version is the last version that provides the quantization error in UBX-TIM-TP messages
+(at least versions 1.13 and 1.32 don't provide this).
+
 Note that this needs a dual band antenna for best performance.
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/e5f35ce8-30de-4bff-a653-6cb765f83cda)
 
