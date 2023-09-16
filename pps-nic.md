@@ -2,14 +2,16 @@
 
 ## i210
 
-The most commonly used network card with a PPS input is the [Intel I210-T1](https://www.intel.com/content/www/us/en/products/sku/68668/intel-ethernet-server-adapter-i210t1/specifications.html). Although it's a 10-year old product, it remains an excellent choice.
+The most commonly used network card with a PPS input is the [Intel I210-T1](https://www.intel.com/content/www/us/en/products/sku/68668/intel-ethernet-server-adapter-i210t1/specifications.html). Although it's a 10-year old product, it remains an excellent choice. Its Linux driver (igb) has solid, mature PTP support.
+There's an openly available data sheet that provides complete programming information
+(the data sheet for the i225 is not openly available).
 
 As well as the original Intel cards, there are OEM versions that work fine and
 are cheaper, but you need to choose ones that have the same layout as the Intel
 original and include the 6-pin SDP header. The only visual difference betweens
 between the OEM version and the Intel original are
 - the OEM version does not have the Intel logo, and
-- with the OEM version, the boardm attaches to the bracket using two screws, whereas the Intel
+- with the OEM version, the board attaches to the bracket using two screws, whereas the Intel
 original uses a screw at the bottom and a hook at the top.
 
 The OEM cards are [available from AliExpress](https://www.aliexpress.com/item/1005002592570089.html) for $18 plus shipping.
