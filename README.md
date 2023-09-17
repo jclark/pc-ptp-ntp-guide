@@ -20,7 +20,8 @@ The obvious approach is for the server to run PTP; in PTP terminology, the serve
 PTP hardware support that chrony can make use of will also work for LinuxPTP.
 But chrony is a bit easier to work with than LinuxPTP, so it's a good way to get started.
 
-The particular Linux distribution doesn't matter too much: I've tried Debian, Ubuntu and Fedora. But Fedora tends to have the most well-maintained and up-to-date packages for linuxptp and chrony.
+I think Fedora is the best distribution for this: it has the most well-maintained, up-to-date packages and best documentation for linuxptp and chrony.
+But Debian and Ubuntu also work fine.
 
 In selecting hardware, there's a new feature called Precision Time Measurement (PTM), which is very useful for this application. It allows for precise synchronization between the system clock and the PHC.
 
@@ -37,7 +38,8 @@ Server software configuration:
 
 
 ## References
-* https://chrony-project.org/examples.html#_server_using_reference_clock_on_nic
-* https://linuxptp.sourceforge.net/i210-rework/i210-rework.html
-* https://github.com/AaronWebster/igb-pps-guide
-* https://tsn.readthedocs.io/timesync.html
+* [Chrony example setup using a NIC](https://chrony-project.org/examples.html#_server_using_reference_clock_on_nic)
+* [Fedora guide for Linux PTP](https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/servers/Configuring_PTP_Using_ptp4l/)
+* [Accessing the SDPs on the i210](https://linuxptp.sourceforge.net/i210-rework/i210-rework.html) from the author of LinuxPTP
+* [Synchronizing Time with Linux PTP](https://tsn.readthedocs.io/timesync.html) part of the TSN (Time Sensitive Networking) Documentation Project for Linux
+
