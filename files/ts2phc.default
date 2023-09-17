@@ -1,0 +1,1 @@
+OPTIONS="-f /etc/linuxptp/ts2phc.conf"
