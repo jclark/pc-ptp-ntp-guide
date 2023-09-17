@@ -1,0 +1,38 @@
+[Unit]
+Description=Use PTP management client to configure ptp4l with grandmaster settings
+Documentation=man:pmc
+Wants=ts2phc.service
+Requires=ptp4l.service
+After=ts2phc.service ptp4l.service
+
+[Service]
+Type=oneshot
+# Clock accuracy 0xfe means unknown; 0x23 means 1 microsecond
+# Clock class of 6 means it is connected to a reference like a GPS
+Environment=CLOCK_ACCURACY=0xfe CLOCK_CLASS=6 TRANSPORT_SPECIFIC=0
+EnvironmentFile=-/etc/sysconfig/pmc
+EnvironmentFile=-/etc/default/pmc
+# The quoting here is rather intricate: the string gets interpreted first by systemd and then by bash.
+# The single-quoted string following -c will be passed as an single argument to /bin/bash.
+# Systemd interpretation will transform the argument by: (1) removing the single quotes
+# (2) replacing %% by % (3) removing \ newline sequences (4) replacing \\ by \.
+# The initial colon stops systemd transforming the $ characters
+# (environment variable substitution is performed by bash not systemd).
+# The date command figures out the TAI-UTC offset from the system's time zone database,
+# which includes leap second information.
+ExecStart=:/bin/bash -c 'UTC_OFFSET=$(expr 10 + $(date -u --date=TZ=\\"right/UTC\\"00:00 +%%S)); \
+     /usr/sbin/pmc -u -b 0 -t $TRANSPORT_SPECIFIC "set GRANDMASTER_SETTINGS_NP \
+          clockClass              $CLOCK_CLASS \
+          clockAccuracy           $CLOCK_ACCURACY \
+          offsetScaledLogVariance 0xffff \
+          currentUtcOffset        $UTC_OFFSET \
+          leap61                  0 \
+          leap59                  0 \
+          currentUtcOffsetValid   1 \
+          ptpTimescale            1 \
+          timeTraceable           1 \
+          frequencyTraceable      0 \
+          timeSource              0x20"'
+
+[Install]
+WantedBy=multi-user.target
