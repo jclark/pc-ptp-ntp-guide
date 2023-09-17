@@ -1,0 +1,14 @@
+[Unit]
+Description=Synchronize PTP hardware clock from external timestamp
+# Uses system clock as source for ToD
+After=time-sync.target
+Wants=time-sync.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/ts2phc
+EnvironmentFile=-/etc/default/ts2phc
+ExecStart=/usr/sbin/ts2phc $OPTIONS
+
+[Install]
+WantedBy=multi-user.target
