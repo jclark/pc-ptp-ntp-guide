@@ -1,4 +1,4 @@
-# How to do precision network time synchronization on PC hardware
+# Precision network time synchronization on PC hardware
 
 This is a guide to how to precisely synchronize the clocks of computers on a local area network using inexpensive PC hardware, by making use of hardware designed to support the IEEE 1588 standard for Precision Time Protocol (PTP).
 
@@ -41,12 +41,3 @@ Server software configuration:
 * https://linuxptp.sourceforge.net/i210-rework/i210-rework.html
 * https://github.com/AaronWebster/igb-pps-guide
 * https://tsn.readthedocs.io/timesync.html
-
-
-
-
-
-
-
-
-
