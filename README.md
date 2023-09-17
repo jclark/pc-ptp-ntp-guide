@@ -37,10 +37,10 @@ Server software configuration:
 
 
 ## References
-https://chrony-project.org/examples.html#_server_using_reference_clock_on_nic
-https://linuxptp.sourceforge.net/i210-rework/i210-rework.html
-https://github.com/AaronWebster/igb-pps-guide
-https://tsn.readthedocs.io/timesync.html
+* https://chrony-project.org/examples.html#_server_using_reference_clock_on_nic
+* https://linuxptp.sourceforge.net/i210-rework/i210-rework.html
+* https://github.com/AaronWebster/igb-pps-guide
+* https://tsn.readthedocs.io/timesync.html
 
 
 
