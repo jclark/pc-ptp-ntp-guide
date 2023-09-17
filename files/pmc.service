@@ -4,6 +4,8 @@ Documentation=man:pmc
 Wants=ts2phc.service
 Requires=ptp4l.service
 After=ts2phc.service ptp4l.service
+# This is to prevent phc2sys feeding info to chronyd before the PHC is in sync
+Before=phc2sys.service
 
 [Service]
 Type=oneshot
