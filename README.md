@@ -26,13 +26,13 @@ In selecting hardware, there's a new feature called Precision Time Measurement (
 
 Hardware selection and assembly:
 * [GPS receivers](gps.md) that work well for this application
-* [NICs with PPS input](pps-nic.md), and how to connect them to a GPS receiver
+* [NICs with PPS input](pps-nic.md) and how to connect them to a GPS receiver
 * [PCs that work well as time servers](server-pc.md)
 * more about [PTM](ptm.md) 
 
 Server software configuration:
-* [Verify](verify.md) that the NIC and GPS are properly working with the operating system.
-* [chrony](chrony.md) - how to set up chrony
+* [Linux prequisites](linux-server.md) - make sure everything is working at the Linux kernel level
+* [chrony](chrony.md) - how to set up chrony with gpsd
 * linuxptp
 
 

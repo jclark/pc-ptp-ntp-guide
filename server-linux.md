@@ -1,8 +1,11 @@
-# Verify PPS and GPS
+# Time server Linux preqrequisites
+
+It's a good idea to make sure that everything is working at the kernel level before trying to set up NTP or PTP.
+Part of this is determining the device names that the Linux kernel is using for our hardware.
 
 ## Verify PPS
 
-We need to check that the operating system is seeing the PPS signal.
+In this section, we will check that the PPS signal into the NIC is working properly.
 
 If the NIC is `enp1s0`, then first do:
 
