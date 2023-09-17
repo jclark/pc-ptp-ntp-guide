@@ -2,7 +2,6 @@
 Description=Synchronize PTP hardware clock from external timestamp
 # Uses system clock as source for ToD
 After=time-sync.target
-Wants=time-sync.target
 
 [Service]
 Type=simple
