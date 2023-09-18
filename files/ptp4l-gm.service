@@ -10,8 +10,13 @@ Before=phc2sys.service
 [Service]
 Type=oneshot
 # Clock accuracy 0xfe means unknown; 0x23 means 1 microsecond
+Environment=CLOCK_ACCURACY=0xfe
 # Clock class of 6 means it is connected to a reference like a GPS
-Environment=CLOCK_ACCURACY=0xfe CLOCK_CLASS=6 TRANSPORT_SPECIFIC=0 DELAY=10
+Environment=CLOCK_CLASS=6
+Environment=TRANSPORT_SPECIFIC=0
+# Delay in seconds before executing the pmc command that changes the settings.
+# The delay is to give time to phc2sys to settle down a little.
+Environment=DELAY=10
 EnvironmentFile=-/etc/sysconfig/ptp4l-gm
 EnvironmentFile=-/etc/default/ptp4l-gm
 ExecStartPre=/bin/sleep $DELAY
