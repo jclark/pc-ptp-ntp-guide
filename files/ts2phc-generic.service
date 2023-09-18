@@ -1,12 +1,18 @@
 [Unit]
 Description=Synchronize PTP hardware clock from external timestamp
-# Uses system clock as source for ToD
+# -s generic uses system clock as source for ToD
+# so we depend on time being in sync
+# In order for this to have effect, you need to also enable chrony-wait.service (or something similar)
+# Comment the next line out if you change to -s nmea below
 After=time-sync.target
+# This is not ideal for -s nmea, but I'm not sure what's better.
+After=network-online.target
 
 [Service]
 Type=simple
 EnvironmentFile=-/etc/sysconfig/ts2phc
 EnvironmentFile=-/etc/default/ts2phc
+# If you change this to -s nmea, then comment out the ordering after time-sync.target above.
 ExecStart=/usr/sbin/ts2phc -s generic $OPTIONS
 
 [Install]
