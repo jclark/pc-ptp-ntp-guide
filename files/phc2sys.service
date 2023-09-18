@@ -1,0 +1,13 @@
+[Unit]
+Description=Synchronize the system clock from a PTP hardware clock
+Documentation=man:phc2sys
+After=ptp4l.service ts2phc.service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/phc2sys
+EnvironmentFile=-/etc/sysconfig/phc2sys
+ExecStart=/usr/sbin/phc2sys $OPTIONS
+
+[Install]
+WantedBy=multi-user.target
