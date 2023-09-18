@@ -1,5 +1,5 @@
 phc2sys.sysconfig /etc/sysconfig/phc2sys
-pmc.service /etc/systemd/system/pmc.service
+ptp4l-gm.service /etc/systemd/system/ptp4l-gm.service
 ptp4l.conf /etc/ptp4l.conf
 refclock-shm.conf /etc/chrony.d/refclock-shm.conf
 ts2phc.conf /etc/ts2phc.conf
