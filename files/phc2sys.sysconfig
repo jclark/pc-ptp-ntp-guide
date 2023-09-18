@@ -1,2 +1,4 @@
-#OPTIONS="-a -r"
+# Options for phc2sys
+# Using -O 0 means that the SHM segment will get TAI time
+# The corresponding chrony refclock should then use the tai option
 OPTIONS="-s enp1s0 -O 0 -E ntpshm"
