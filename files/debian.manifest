@@ -4,5 +4,5 @@ phc2sys.service /etc/systemd/system/phc.service
 ptp4l.conf /etc/linuxptp/ptp4l.conf
 refclock-shm.conf /etc/chrony.d/refclock-shm.conf
 ts2phc.conf /etc/linuxptp/ts2phc.conf
-ts2phc-generic.service /etc/systemd/system/ts2phc.service
+ts2phc.service /etc/systemd/system/ts2phc.service
 ts2phc.default /etc/default/ts2phc
