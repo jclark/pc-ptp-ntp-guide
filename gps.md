@@ -61,9 +61,17 @@ These need to be wired up as follows:
 | yellow | PPS | - | SDP0 | 
 | grey | - | GND | GND |
 
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/6478d23c-d817-4293-beb2-7af62f3e88a1)
+
 In the photo, I'm using
 
 * [Waveshare USB to TTL converter with CH343G](https://www.waveshare.com/product/usb-to-ttl-b.htm) (about $10 w/ shipping from AliExpress); there's also a [version using the FT232RL](https://www.waveshare.com/usb-to-ttl.htm)
 * [WAVGAT ATGM332D 5N1 GPS module](https://www.aliexpress.com/item/1005004402839841.html) (about $10 w/ shipping); you can get a GPS antenna at the same time for another $4
 
 Note that two GND connections are needed to the USB-to-TTL converter, and the Waveshare converter has two GND pins, which makes it the convenient choice here.
+
+This shows the rear when it's fully assembled. The GPS antenna is attached directly to the SMA connector on the module. I've used a magnetic M3 female PCB stand to attach
+the module to the backplate.
+
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/ce30d226-b7d0-44d7-976e-cb92bc928f8c)
+
