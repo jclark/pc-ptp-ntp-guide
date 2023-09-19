@@ -2,7 +2,7 @@
 
 This is a guide to how to precisely synchronize the clocks of computers on a local area network using inexpensive PC hardware, by making use of hardware designed to support the IEEE 1588 standard for Precision Time Protocol (PTP).
 
-This guide is designed to complement my [guide to using the hardware PTP support on the Raspberry Pi CM4]https://github.com/jclark/rpi-cm4-ptp-guide/).
+This guide is designed to complement my [guide to using the hardware PTP support on the Raspberry Pi CM4](https://github.com/jclark/rpi-cm4-ptp-guide/).
 
 Many modern, inexpensive NICs include hardware support for PTP. This means that the NIC has its own clock, sometimes called the PTP Hardware Clock (PHC), that can be used to timestamp incoming and outgoing network packets. This hardware support makes it possible to achieve accuracies of less than 100 nanoseconds. However, achieving this level of accuracy requires running a time server on your local area network.
 The main goal of this guide is to explain in detail the hardware and software needed to do this, without assuming prior knowledge of time synchronization.
