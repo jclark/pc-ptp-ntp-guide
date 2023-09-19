@@ -65,11 +65,13 @@ Both chrony or ts2phc need to be configured with the pulse width for NICs that t
 
 ## Verify GPS
 
-First determine the serial device name. It's likely to be
+First determine the serial device name:
 
-* `/dev/ttyUSB0` if you're connecting via a USB-RS232 or USB-TTL converter
-* `/dev/ttyS0` if you've connecting via a DB9 serial port on the PC
-* `/dev/ttyACM0` for a GPS in an M.2 slot
+* a USB-RS232 or USB-TTL converter will usually show up as`/dev/ttyUSB0`, but occasionally may show up as `/dev/ttyACM0`
+* an RS232 connection using a DB9 port on the PC will usually show up as `/dev/ttyS0`
+* a GPS in M.2 slot will usually be `/dev/ttyACM0`
+
+Obviously you may need to change 0 in the device name to a larger number, if you have multiple such devices.
 
 It's convenient if you are in the `dialout` group so you can access the serial devices
 
