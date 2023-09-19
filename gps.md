@@ -43,7 +43,27 @@ HPG 1.12, since that version is the last version that provides the quantization 
 Note that this needs a dual band antenna for best performance.
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/e5f35ce8-30de-4bff-a653-6cb765f83cda)
 
+# GPS TTL-level mini module
 
+This is the cheapest option. It combines 
 
+- a small GPS module with 2.54mm TTL-level pins including a PPS pin
+- a USB to TTL converter
 
+These need to be wired up as follows:
 
+| Color | GPS pin | USB to TTL pin | i210 pin  |
+| --- | --- | --- | --- | --- |
+| black | GND | GND | - |
+| red | VCC | VCC | - |
+| green | TXD | RXD | - | 
+| white | RXD | TXD | - |
+| yellow | PPS | - | SDP0 | 
+| grey | - | GND | GND |
+
+In the photo, I'm using
+
+* [Waveshare USB to TTL converter with CH343G](https://www.waveshare.com/product/usb-to-ttl-b.htm) (about $10 w/ shipping); there's also a [version using the FT232RL](https://www.waveshare.com/usb-to-ttl.htm)
+* [WAVGAT ATGM332D 5N1 GPS module](https://www.aliexpress.com/item/1005004402839841.html) (about $10 w/ shipping from AliExpress)
+
+Note that two GND connections are needed to the USB-to-TTL converter, and the Waveshare converter has two GND pins, which makes it the convenient choice here.
