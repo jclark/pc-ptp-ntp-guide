@@ -70,9 +70,12 @@ In the photo, I'm using
 
 Note that two GND connections are needed to the USB-to-TTL converter, and the Waveshare converter has two GND pins, which makes it the convenient choice here.
 
-This shows the rear when it's fully assembled. The GPS antenna is attached directly to the SMA connector on the module.
+The Waveshare converter comes with a cable with Dupont connectors, but it is likely to be too short. I'm using some separate Dupont female-female jumpers to
+wire things up.
 
+This shows the rear when it's fully assembled. The GPS antenna is attached directly to the SMA connector on the module.
 I've used a [M3 female magnetic screw](https://www.aliexpress.com/item/1005005091559659.html) to attach the module to the backplate.
+This setup is rather vulnerable to the antenna cable being yanked: I recommend clamping the antenna cable to the table.
 
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/ce30d226-b7d0-44d7-976e-cb92bc928f8c)
 
