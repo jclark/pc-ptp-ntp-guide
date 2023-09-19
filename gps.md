@@ -53,7 +53,7 @@ This is the cheapest option. It combines
 These need to be wired up as follows:
 
 | Color | GPS pin | USB to TTL pin | i210 pin  |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | black | GND | GND | - |
 | red | VCC | VCC | - |
 | green | TXD | RXD | - | 
@@ -63,7 +63,7 @@ These need to be wired up as follows:
 
 In the photo, I'm using
 
-* [Waveshare USB to TTL converter with CH343G](https://www.waveshare.com/product/usb-to-ttl-b.htm) (about $10 w/ shipping); there's also a [version using the FT232RL](https://www.waveshare.com/usb-to-ttl.htm)
-* [WAVGAT ATGM332D 5N1 GPS module](https://www.aliexpress.com/item/1005004402839841.html) (about $10 w/ shipping from AliExpress)
+* [Waveshare USB to TTL converter with CH343G](https://www.waveshare.com/product/usb-to-ttl-b.htm) (about $10 w/ shipping from AliExpress); there's also a [version using the FT232RL](https://www.waveshare.com/usb-to-ttl.htm)
+* [WAVGAT ATGM332D 5N1 GPS module](https://www.aliexpress.com/item/1005004402839841.html) (about $10 w/ shipping); you can get a GPS antenna at the same time for another $4
 
 Note that two GND connections are needed to the USB-to-TTL converter, and the Waveshare converter has two GND pins, which makes it the convenient choice here.
