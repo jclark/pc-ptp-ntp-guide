@@ -34,8 +34,7 @@ Hardware selection and assembly:
 Server software configuration:
 * [Linux prequisites](linux-server.md) - make sure everything is working at the Linux kernel level
 * [chrony](chrony.md) - how to set up chrony with gpsd
-* linuxptp
-
+* [Linux PTP](linuxptp-gm.md) - how to configure Linux PTP as a PTP server (grandmaster)
 
 ## References
 * [Chrony example setup using a NIC](https://chrony-project.org/examples.html#_server_using_reference_clock_on_nic)
