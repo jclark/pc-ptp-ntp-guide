@@ -1,4 +1,4 @@
-# Precise Time Measurement (PTM)
+# Precision Time Measurement (PTM)
 
 PTP hardware support allows precise synchronization of a GPS with a NIC clock, and allows precise
 synchronization over the network between the clock of one NIC and the clock of another NIC.
