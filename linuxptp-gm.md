@@ -30,6 +30,8 @@ Add this [refclock](files/refclock-shm.conf) to the chrony configuration:
 * In Fedora, I suggest adding `confdir /etc/chrony.d/` to `/etc/chrony.conf` and then copying the refclock .conf file into `/etc/chrony.d`. 
 * In Debian, you can just copy the refclock .conf file into `/etc/chrony/conf.d`.
 
+If your chrony.conf specifies other servers using the `pool` or `server` directive, make sure you have more than one server, so you don't get into a situation where there is no majority for single time source.
+
 Then restart the chrony service. In Fedora
 
 ```
