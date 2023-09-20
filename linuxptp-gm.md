@@ -132,6 +132,15 @@ chronyc sources
 
 If everything's working, in a few seconds chrony should start using the PPS source.
 
+### Firewall
+
+Fedora has a firewall active by default. We will need to allow PTP through the firewall:
+
+```
+sudo firewall-cmd --add-service ptp
+sudo firewall-cmd --add-service ptp --permanent
+```
+
 ## Use SOCK refclock with phc2sys
 
 In linuxptp 4.0, phc2sys can use the chrony SOCK refclock instead of SHM.
