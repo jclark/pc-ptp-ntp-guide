@@ -174,7 +174,7 @@ hwtimestamp enp1s0
 ```
 
 But this won't work with clients whose NICs have the ability to timestamp only PTP packets.
-To support such clients, we also we have to use [NTP-over-PTP](https://datatracker.ietf.org/doc/draft-ietf-ntp-over-ptp/) in order to use hardware timestamping. To enable this, we add the line
+To support such clients, we also have to use [NTP-over-PTP](https://datatracker.ietf.org/doc/draft-ietf-ntp-over-ptp/) in order to use hardware timestamping. To enable this, we add the line
 
 ```
 ptpport 319
