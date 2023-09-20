@@ -62,7 +62,6 @@ It should should a line starting with `#* PPS`. This means it has successfully s
 
 Connecting up the serial output from the GPS allows chrony to work even when there is no connection to any other NTP server.
 
-
 Install gpsd:
 
 ```
@@ -79,43 +78,30 @@ USBAUTO=""
 Now we are going to tweak the systemd unit file:
 
 ```
-sudo cp /lib/systemd/system/gpsd.service /etc/systemd/system/
+sudo systemctl edit gpsd.service
 ```
 
-Then edit /etc/systemd/system/gpsd.service as follows.
-Delete the line
+Then type
 
 ```
-Requires=gpsd.socket
+[Unit]
+PartOf=chronyd.service
 ```
 
-and then after the line that says:
-
-```
-After=chronyd.service
-```
-
-add the line:
-
-```
-Requires=chronyd.service
-```
-
-This ensures that when chronyd gets restarted, gpsd will also get restarted.
+and write out the file and exit the editor.
+This installs an override in `/etc/systemd/system/gpsd.service.d/override.conf`,
+which ensures that when chronyd gets restarted, gpsd will also get restarted.
 
 TODO: Occasionally chrony doesn't receive messages from gpsd. I think what is
 happening is that gpsd is started before chrony has had time to create the sockets.
 
-Now do:
+Now enable and start the service:
+
 ```
-sudo systemctl daemon-reload
-sudo systemctl stop gpsd.socket
-sudo systemctl disable gpsd.socket
-sudo systemctl start gpsd.service
-sudo systemctl enable gpsd.service
+sudo systemctl enable --now gpsd.service
 ```
 
-Now use
+Now run
 
 ```
 gpsmon
