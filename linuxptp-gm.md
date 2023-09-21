@@ -148,13 +148,16 @@ sudo firewall-cmd --add-service ptp --permanent
 
 ## Use SOCK refclock with phc2sys
 
-In linuxptp 4.0, phc2sys can use the chrony SOCK refclock instead of SHM.
+This is an alternative approach in which phc2sys uses the SOCK refclock instead of the SHM refclock
+to provide data to chrony. This is supported in LinuxPTP 4.0.
 
 TODO: explain details
 
 ## Use nmea time-of-day source in ts2phc
 
-I have found that unfortunately the ts2phc feature of getting time-of-day from NMEA messages does not work reliably when used with a NIC, such as the i210, that timestamps both pulse edges, in either version 3 or 4.0.
+This is an alternative approach in which ts2phc gets the time-of-date by reading NMEA messages
+from the GPS serial connection.
+Unfortunately this ts2phc features does not appear not work reliably when used with a NIC, such as the i210, that timestamps both pulse edges, in either version 3 or 4.0.
 
 If this is fixed, then to make use of it:
 
@@ -169,11 +172,14 @@ TODO: are there are dependencies that need fixing?
 
 ## Time of day from gpsd via chrony
 
-The idea in this approach is that chrony gets the time-of-day from gpsd.
+This is an alternative approach in which chrony gets time-of-day from the GPS via gpsd.
 
 TODO: explain details
 
 ## Allow chrony server to use hardware timestamping
+
+This is an alternative approach in which ts2phc and ptp4l use vclocks, so as to enable
+chrony to make use of hardware timestamping.
 
 Chrony can transfer time over NTP more accurately when it is using hardware timestamping.
 Hardware timestamping in chrony requires the PHC to be free-running, which means
