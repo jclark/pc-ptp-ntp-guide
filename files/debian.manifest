@@ -2,6 +2,7 @@ phc2sys.sysconfig /etc/default/phc2sys
 phc2sys.service /etc/systemd/system/phc.service
 ptp4l-gm.service /etc/systemd/system/ptp4l-gm.service
 ptp4l.conf /etc/linuxptp/ptp4l.conf
+ptp4l.service /etc/systemd/system/ptp4l.service
 refclock-shm.conf /etc/chrony.d/refclock-shm.conf
 ts2phc.conf /etc/linuxptp/ts2phc.conf
 ts2phc.service /etc/systemd/system/ts2phc.service

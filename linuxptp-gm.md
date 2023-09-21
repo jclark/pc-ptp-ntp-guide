@@ -92,6 +92,9 @@ should show a value close to 37s (i.e. close to 37000000000 nanoseconds)
 
 ### ptp4l service
 
+On Debian, copy the service file [ptp4l.service](files/ptp4l.service) into the `/etc/systemd/system/`
+directory (Debian only provides a template unit for ptp4l).
+
 ### ptp4l-gm service
 
 This service is used to configure ptp4l with settings needs to be make it work properly as a grandmaster.
