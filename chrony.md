@@ -9,21 +9,24 @@ This page is written assuming [Fedora](fedora.md) as the OS.
 
 ## PPS input
 
-Chrony can work fine with just the PPS signal from the GPS: the pulse says exactly when a second starts; chrony can figure out which second it is from network sources.
+Chrony can work fine with just the PPS signal from the GPS: the pulse says exactly when a second starts; chrony can figure out which second it is from network sources. Make sure you have chrony set up in way similar to the default getting time from the network, typically using `pool` directive. 
 
 To use the PPS as a source of time, add this line to `/etc/chrony.conf`:
 
 ```
-refclock PHC /dev/ptp0:extpps:pin=0 width 0.1 poll 0 precision 1e-7 refid PPS
+refclock PHC /dev/ptp0:extpps:pin=0 poll 0 width 0.1 delay 6e-8 precision 2e-8 refid PPS
 ```
 
 Here:
 
-* Usually the PHC (PTP Hardware Clock) refclock expects the PTP Hardware Clock to have been synchronized with PTP; the `extpps` option enables a different mode of operation, in which it reads thes timestamps of pulses on a pin on the PTP hardware clock; it defaults to pin 0, which is what we need.
-* `/dev/ptp0` is the device for the PTP hardware clock
-* `pin=0` means to use pin 0
-* `width 0.1` is the pulse width in seconds.
- * the `refid` option names this refclock `PPS`.
+* Usually the PHC (PTP Hardware Clock) refclock expects the PTP Hardware Clock to have been synchronized with PTP; the `extpps` option enables a different mode of operation, in which it reads thes timestamps of pulses on a pin on the PTP hardware clock
+* `/dev/ptp0` is the device for the PTP hardware clock; ee [Verify PPS](service-linux.md#verify-pps) section for how to determine this
+* `pin=0` means to use pin 0; this is the physical pin that the PPS signal is connected to
+* `poll 0` says to use samples immediately rather than store them (since the jitter should be very small)
+* `width 0.1` is the pulse width in seconds; see [Pulse Width](service-linux.md#pulse-width) section for how to determine this
+* `delay 6e-8` specifies a delay of 60ns; this is suitable for a GPS with an accuracy of 30ns
+* `precision 2e-8` specifies a precision of 20ns; this is the approximate expected stability of readings from the PHC
+* `refid PPS`  names this refclock `PPS`
 
 To use chrony as a server in your network, you will also need something like:
 
@@ -92,9 +95,6 @@ and write out the file and exit the editor.
 This installs an override in `/etc/systemd/system/gpsd.service.d/override.conf`,
 which ensures that when chronyd gets restarted, gpsd will also get restarted.
 
-TODO: Occasionally chrony doesn't receive messages from gpsd. I think what is
-happening is that gpsd is started before chrony has had time to create the sockets.
-
 Now enable and start the service:
 
 ```
@@ -112,15 +112,17 @@ to check that gpsd is seeing the GPS. Use Ctrl-C to exit.
 Now add this line to /etc/chrony.conf:
 
 ```
-refclock SOCK /run/chrony.clk.ttyUSB0.sock poll 3 offset 0 noselect refid UART
+refclock SOCK /run/chrony.clk.ttyUSB0.sock delay 0.2 offset 0 poll 4 noselect refid UART
 ```
 
-There's a lot packed into this line.
- * When gpsd starts reading from /dev/ttyX, it checks for the existence of the socket /run/chrony.clk.ttyX.sock; if this socket exists, then it will send the messages with the current date-time derived from messages received from the GPS over this socket.
- * The refclock SOCK line causes chrony to create the socket in the place where gpsd expects. Chrony will then read date-time messages from that.
- * The `refid UART` option gives the name `UART` to this reference clock.
- * The `offset 0` means that chrony should assume that there are 0 seconds delay between the instant when the second started and the instant when it receives the date-time message for that second through the socket. This is certainly the wrong value. We will figure out the right value below.
- * The `noselect` option means that this refclock is not going to be used as a time source on its own: it's too inaccurate for that. (Instead it's going to be used to supplement the pulse-per-second signal.)
+The meaning of this line is as follows:
+ * the `SOCK` kind of refclock reads date-time samples from a socket 
+ * `/run/chrony.clk.ttyUSB0.sock` is the filename of the socket that chrony will create in order to
+ receive information from gpsd; when gpsd starts reading from /dev/ttyX, it checks for the existence of the socket /run/chrony.clk.ttyX.sock; if this socket exists, then it will send the messages with the current date-time derived from messages received from the GPS over this socket
+ * `offset 0` means that chrony should assume that there are 0 seconds delay between the instant when the second started and the instant when it receives the date-time message for that second through the socket; this is certainly the wrong value; we will figure out the right value below
+  * `poll 4` means samples are stored for a period of 2<sup>4</sup> seconds i.e. 16 seconds, before being filtered and used for the time; we will use this to get a better estimate for `offset``
+ * `noselect` option means that this refclock is not going to be used as a time source on its own: it's too inaccurate for that. (Instead it's going to be used to supplement the pulse-per-second signal.)
+* `refid UART` named this refclock `UART` 
 
 Now
 
@@ -141,7 +143,9 @@ You should see lines similar to this:
 #? UART                          0   3   377     9   +216ms[ +216ms] +/- 1434us
 ```
 
+as well as multiple lines for NTP servers.
 The `216ms` tells us the offset we need in the `refclock SOCK` line: 216ms is 0.216s, so we need 0.216 as the offset value.
+
 
 Now we're ready to put the final tweaks to the two refclock lines. First in the `reflock SOCK` line, we edit the `offset 0` to be e.g. `offset 0.216`.
 Then we can add a `lock UART` option to the `refclock PHC` line: this means that the pulse should be combined with the date-time from the UART refclock to provide a complete and accurate time sample.
@@ -149,9 +153,11 @@ Then we can add a `lock UART` option to the `refclock PHC` line: this means that
 The refclock lines now look like this:
 
 ```
-refclock PHC /dev/ptp0:extpps:pin=0 poll 0 width 0.1 precision 1e-7 refid PPS lock UART
-refclock SOCK /run/chrony.clk.ttyUSB0.sock poll 3 offset 0.216 noselect refid UART
+refclock PHC /dev/ptp0:extpps:pin=0 poll 0 width 0.1 delay 6e-8 precision 2e-8 refid PPS lock UART
+refclock SOCK /run/chrony.clk.ttyUSB0.sock delay 0.2 offset 0.216 poll 4 noselect refid UART
 ```
+
+TODO: is it better to omit the `lock UART` from the PHC line and omit the `noselect` from the UART line?
 
 Now we can restart chrony again:
 
