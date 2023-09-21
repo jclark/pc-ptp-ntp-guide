@@ -95,6 +95,24 @@ should show a value close to 37s (i.e. close to 37000000000 nanoseconds)
 On Debian, copy the service file [ptp4l.service](files/ptp4l.service) into the `/etc/systemd/system/`
 directory (Debian only provides a template unit for ptp4l).
 
+Then edit the `ptp4l.conf`: on Fedora, this is in `/etc`; on Debian, it is in `/etc/linuxptp`.
+
+Many of the configuration options depend on the PTP profile you are using. Suitable configuration files
+for many profiles can be found in `/usr/share/doc/linuxptp/configs`.
+
+To get started, I suggest using the LinuxPTP defaults for most options, but a few things to be changed.
+You can either edit the existing configuration file or copy [this one](files/ts2phc.conf).
+
+* We need to specify the interfaces on which LinuxPTP should run: this is done by specifying a section
+in the form `[enp1s0]`. An empty section tells LinuxPTP to on that interface.
+* We need to make sure LinuxPTP runs as a server (grandmaster).
+   * The Fedora ptp4l.cong has `slaveOnly 1`; we need to remove that or change it to `0`.
+   * We also need to add `masterOnly 1`; with LinuxPTP 4.0 you can use `serverOnly 1`.
+
+TODO: Not sure what the right thing to do here is. I think we need to prevent ptp4l from trying to 
+control the PHC, since that is like to interfere with ts2phc. One possibility is to use `masterOnly`.
+Another possibility is to use `BMCA master`.
+
 ### ptp4l-gm service
 
 This service is used to configure ptp4l with settings needs to be make it work properly as a grandmaster.
