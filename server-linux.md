@@ -18,7 +18,7 @@ This will give us the number of the PTP Hardware Clock, which will often be 0.
 Make sure the interface is in an UP state.
 
 ```
-ip link enp1s0 show
+ip link show enp1s0
 ```
 
 If it's not up, then bring it up with
