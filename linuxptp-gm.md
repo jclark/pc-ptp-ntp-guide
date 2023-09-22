@@ -115,7 +115,7 @@ To get started, I suggest using the LinuxPTP defaults for most options, but a fe
 You can either edit the existing configuration file or copy [this one](files/ts2phc.conf).
 
 * We need to specify the interfaces on which LinuxPTP should run: this is done by specifying a section
-in the form `[enp1s0]`. An empty section tells LinuxPTP to on that interface.
+in the form `[enp1s0]`. An empty section tells LinuxPTP to run on that interface.
 * We need to make sure LinuxPTP runs as a server (grandmaster).
    * The Fedora ptp4l.cong has `slaveOnly 1`; we need to remove that or change it to `0`.
    * We also need to add `masterOnly 1`; with LinuxPTP 4.0 you can use `serverOnly 1`.
