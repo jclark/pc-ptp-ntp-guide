@@ -38,6 +38,8 @@ Server software configuration:
 * [chrony](chrony.md) - how to set up chrony with gpsd
 * [Linux PTP](linuxptp-gm.md) - how to configure Linux PTP as a PTP server (grandmaster)
 
+Information about [inexpensive switches with PTP support](https://github.com/jclark/rpi-cm4-ptp-guide/blob/main/switches.md) are in the CM4 guide.
+
 ## References
 * [Chrony example setup using a NIC](https://chrony-project.org/examples.html#_server_using_reference_clock_on_nic)
 * [Fedora guide for Linux PTP](https://docs.fedoraproject.org/en-US/fedora/latest/system-administrators-guide/servers/Configuring_PTP_Using_ptp4l/)
