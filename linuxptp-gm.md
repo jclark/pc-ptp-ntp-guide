@@ -90,7 +90,7 @@ You can look at the last 30 seconds of log messages from ts2phc using:
 sudo journalctl -u ts2phc -S -30s
 ```
 
-This should with a few minutes show offsets reduing to tens of nanoseconds.
+This should with a few minutes show offsets reducing to tens of nanoseconds.
 
 Also
 
@@ -112,7 +112,7 @@ Many of the configuration options depend on the PTP profile you are using. Suita
 for many profiles can be found in `/usr/share/doc/linuxptp/configs`.
 
 To get started, I suggest using the LinuxPTP defaults for most options, but a few things to be changed.
-You can either edit the existing configuration file or copy [this one](files/ts2phc.conf).
+You can either edit the existing configuration file or copy [this one](files/ptp4l.conf).
 
 * We need to specify the interfaces on which LinuxPTP should run: this is done by specifying a section
 in the form `[enp1s0]`. An empty section tells LinuxPTP to run on that interface.
@@ -120,9 +120,21 @@ in the form `[enp1s0]`. An empty section tells LinuxPTP to run on that interface
    * The Fedora ptp4l.cong has `slaveOnly 1`; we need to remove that or change it to `0`.
    * We also need to add `masterOnly 1`; with LinuxPTP 4.0 you can use `serverOnly 1`.
 
-TODO: Not sure what the right thing to do here is. I think we need to prevent ptp4l from trying to 
-control the PHC, since that is like to interfere with ts2phc. One possibility is to use `masterOnly`.
+TODO: Not sure what the right thing to do here is. I think we need to prevent `ptp4l` from trying to 
+control the PHC, since that is likely to interfere with `ts2phc`. One possibility is to use `masterOnly 1`.
 Another possibility is to use `BMCA master`.
+
+Then enable and start ptp4l:
+
+```
+sudo systemctl enable --now ptp4l.service
+```
+
+Check that it started OK:
+
+```
+sudo systemctl status ptp4l.service
+```
 
 ### ptp4l-gm service
 
@@ -136,7 +148,7 @@ Then enable and start it.
 sudo systemctl enable --now ptp4l-gm.service
 ```
 
-Check that it's started OK:
+Check that it started OK:
 
 ```
 sudo systemctl status ptp4l-gm.service
