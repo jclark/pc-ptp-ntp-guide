@@ -1,7 +1,10 @@
 # GPS receivers
 
-My top recommendation is the BG7TBL TS-1: this provides a high-quality timing receiver, in a form that is convenient to
-use with a PC, at an inexpensive price.
+With a PC, it's generally more convenient to use GPS receiver that has its own case, rather than
+one that is designed to be put inside a case with a computer. This allows you to see the blinking
+PPS LED.
+
+My top recommendation is the BG7TBL TS-1: this provides a high-quality timing receiver, in a separate case, at an inexpensive price.
 
 ## BG7TBL TS-1
 
@@ -29,7 +32,7 @@ are [available on eBay](https://www.ebay.com/itm/333619130232) for about $50 or 
 
 ## ArduSimple simpleRTK2B M.2 ZED-F9P
 
-The [simpleRTK2B M.2](https://www.ardusimple.com/product/simplertk2b-m-2/) fits into a M.2 E-key slot, which is the kind of slot PCs have for wifi cards.
+The [simpleRTK2B M.2](https://www.ardusimple.com/product/simplertk2b-m-2/) fits into a M.2 E-key slot, which is the kind of slot PCs have for Wifi cards.
 
 The module is a u-blox ZED-F9P. It's designed for precise positioning (RTK), but it also supports time mode.
 This is a dual band (L1/L2) module. It's a step up in both price and performance from the LEA-M8T used in the TS-1.
@@ -43,12 +46,23 @@ HPG 1.12, since that version is the last version that provides the quantization 
 Note that this needs a dual band antenna for best performance.
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/e5f35ce8-30de-4bff-a653-6cb765f83cda)
 
-# GPS TTL-level mini module
+## In-case module with USB-to-TTL converter
 
 This is the cheapest option. It combines 
 
-- a small GPS module with 2.54mm TTL-level pins including a PPS pin
+- a GPS module, with the following properties
+   - very cheap
+   - very small
+   - not a fake
+   - no case
+   - TTL-level pins
+   - 0.1" (2.54mm) pins compatible with Dupont connectors
+   - PPS pin
+   - SMA female antenna connector
+   - default speed of 9600 baud (ts2phc in LinuxPTP 3.x only supports 9600 baud)
 - a USB to TTL converter
+
+Suitable boards are available very cheaply, so this is the cheapest option.
 
 These need to be wired up as follows:
 
@@ -70,8 +84,7 @@ In the photo, I'm using
 
 Note that two GND connections are needed to the USB-to-TTL converter, and the Waveshare converter has two GND pins, which makes it the convenient choice here.
 
-The Waveshare converter comes with a cable with Dupont connectors, but it is likely to be too short. I'm using some separate Dupont female-female jumpers to
-wire things up.
+The Waveshare converter comes with a cable with Dupont connectors, but it is likely to be too short. I'm using some separate Dupont female-female jumpers to wire things up.
 
 This shows the rear when it's fully assembled. The GPS antenna is attached directly to the SMA connector on the module.
 I've used a [M3 female magnetic screw](https://www.aliexpress.com/item/1005005091559659.html) to attach the module to the backplate.
