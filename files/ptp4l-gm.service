@@ -11,6 +11,8 @@ PartOf=ptp4l.service
 
 [Service]
 Type=oneshot
+# This is necessary to make PartOf work.
+RemainAfterExit=yes
 # Clock accuracy 0xfe means unknown; 0x23 means 1 microsecond
 Environment=CLOCK_ACCURACY=0xfe
 # Clock class of 6 means it is connected to a reference like a GPS

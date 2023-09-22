@@ -197,7 +197,7 @@ Now check chrony with
 chronyc sources
 ```
 
-If everything's working, in a few seconds chrony should start using the PPS source.
+If everything's working, in a few seconds chrony should start using the PTP source.
 
 ### Firewall
 
@@ -207,6 +207,21 @@ Fedora has a firewall active by default. We will need to allow PTP through the f
 sudo firewall-cmd --add-service ptp
 sudo firewall-cmd --add-service ptp --permanent
 ```
+
+### Test client synchronization
+
+On another machine, run:
+
+```
+sudo ptp4l -i enp1s0 -s -q -m
+```
+
+If this says `increasing tx_timestamp_timeout may correct this issue`, then add a `--tx_timestamp_timeout=10`.
+After a while, it should show consistently small offsets (less than 100).
+
+On Fedora, you will need to allow PTP through the firewall on the client.
+
+Make sure you don't have anything else touching the PHC (like `ts2phc`).
 
 ## Use SOCK refclock with phc2sys
 
