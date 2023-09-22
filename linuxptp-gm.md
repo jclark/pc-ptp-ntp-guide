@@ -24,6 +24,11 @@ This is using tsphc with its "generic" time-of-day source.
 ### chrony service
 
 We assume that chrony in installed with a configuration similar to its default (without any refclocks and with several NTP servers configured using `pool` or `server` directives).
+On Debian, you may need to install it
+
+```
+sudo apt install chrony
+```
 
 Add this [refclock](files/refclock-shm.conf) to the chrony configuration:
 
@@ -42,6 +47,12 @@ In Debian
 
 ```
 sudo systemctl restart chrony
+```
+
+At this point, `chronyc sources` should show the PTP refclock not being used.
+
+```
+#? PTP                           0   0     0     -     +0ns[   +0ns] +/-    0ns
 ```
 
 ### ts2phc service
@@ -87,7 +98,7 @@ Also
 sudo phc_ctl enp1s0 cmp
 ```
 
-should show a value close to 37s (i.e. close to 37000000000 nanoseconds)
+should show a value close to -37s (i.e. close to -37000000000 nanoseconds)
 
 
 ### ptp4l service
