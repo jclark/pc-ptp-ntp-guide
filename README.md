@@ -1,5 +1,7 @@
 # Precision network time synchronization on PC hardware
 
+*This is still a work-in-progress. Suggestions for improvements are very welcome and can be made by creating issues.*
+
 This is a guide to how to precisely synchronize the clocks of computers on a local area network using inexpensive PC hardware, by making use of hardware designed to support the IEEE 1588 standard for Precision Time Protocol (PTP).
 
 This guide is designed to complement my [guide to using the hardware PTP support on the Raspberry Pi CM4](https://github.com/jclark/rpi-cm4-ptp-guide/).
