@@ -140,7 +140,7 @@ sudo systemctl status ptp4l.service
 
 This service is used to configure ptp4l with settings needs to be make it work properly as a grandmaster.
 
-Copy the service file [ts2phc.service](files/ptp4l-gm.service) into the `/etc/systemd/system/` directory.
+Copy the service file [ptp4l-gm.service](files/ptp4l-gm.service) into the `/etc/systemd/system/` directory.
 
 Then enable and start it.
 
@@ -148,10 +148,31 @@ Then enable and start it.
 sudo systemctl enable --now ptp4l-gm.service
 ```
 
-Check that it started OK:
+Note that it sleeps for 10 seconds when it starts (this is a hack). Check that it worked OK:
 
 ```
-sudo systemctl status ptp4l-gm.service
+sudo journalctl -u ptp4l-gm.service
+```
+
+It should show something like:
+
+```
+Sep 22 11:18:50 halloumi systemd[1]: Starting ptp4l-gm.service - Change the settings of ptp4l to work as a grandmaster.>
+Sep 22 11:19:00 halloumi bash[4310]: sending: SET GRANDMASTER_SETTINGS_NP
+Sep 22 11:19:00 halloumi bash[4310]:         6805ca.fffe.802b29-0 seq 0 RESPONSE MANAGEMENT GRANDMASTER_SETTINGS_NP
+Sep 22 11:19:00 halloumi bash[4310]:                 clockClass              6
+Sep 22 11:19:00 halloumi bash[4310]:                 clockAccuracy           0xfe
+Sep 22 11:19:00 halloumi bash[4310]:                 offsetScaledLogVariance 0xffff
+Sep 22 11:19:00 halloumi bash[4310]:                 currentUtcOffset        37
+Sep 22 11:19:00 halloumi bash[4310]:                 leap61                  0
+Sep 22 11:19:00 halloumi bash[4310]:                 leap59                  0
+Sep 22 11:19:00 halloumi bash[4310]:                 currentUtcOffsetValid   1
+Sep 22 11:19:00 halloumi bash[4310]:                 ptpTimescale            1
+Sep 22 11:19:00 halloumi bash[4310]:                 timeTraceable           1
+Sep 22 11:19:00 halloumi bash[4310]:                 frequencyTraceable      0
+Sep 22 11:19:00 halloumi bash[4310]:                 timeSource              0x20
+Sep 22 11:19:00 halloumi systemd[1]: ptp4l-gm.service: Deactivated successfully.
+Sep 22 11:19:00 halloumi systemd[1]: Finished ptp4l-gm.service - Change the settings of ptp4l to work as a grandmaster.
 ```
 
 ### phc2sys service
