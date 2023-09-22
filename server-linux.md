@@ -70,6 +70,7 @@ First determine the serial device name:
 * a USB-RS232 or USB-TTL converter will usually show up as`/dev/ttyUSB0`, but occasionally may show up as `/dev/ttyACM0`
 * an RS232 connection using a DB9 port on the PC will usually show up as `/dev/ttyS0`
 * a GPS in M.2 slot will usually be `/dev/ttyACM0`
+* a GPS with a USB connection will be either `/dev/ttyACM0` or `/dev/ttyUSB0`
 
 Obviously you may need to change 0 in the device name to a larger number, if you have multiple such devices.
 
