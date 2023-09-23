@@ -75,7 +75,7 @@ These need to be wired up as follows:
 | yellow | PPS | - | SDP0 | 
 | grey | - | GND | GND |
 
-![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/6478d23c-d817-4293-beb2-7af62f3e88a1)
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/57ca2181-8ed0-42aa-9729-a9ba714faef8)
 
 In the photo, I'm using
 
@@ -90,5 +90,6 @@ This shows the rear when it's fully assembled. The GPS antenna is attached direc
 I've used a [M3 female magnetic screw](https://www.aliexpress.com/item/1005005091559659.html) to attach the module to the backplate.
 This setup is rather vulnerable to the antenna cable being yanked: I recommend clamping the antenna cable to the table.
 
-![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/ce30d226-b7d0-44d7-976e-cb92bc928f8c)
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/c0b39851-f717-4587-b162-61d32517f4ba)
+
 
