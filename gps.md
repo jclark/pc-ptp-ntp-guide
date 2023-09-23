@@ -44,7 +44,9 @@ HPG 1.12, since that version is the last version that provides the quantization 
 (at least versions 1.13 and 1.32 don't provide this).
 
 Note that this needs a dual band antenna for best performance.
-![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/e5f35ce8-30de-4bff-a653-6cb765f83cda)
+
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/9029f825-af84-4ebe-9e39-e6bc7f919eda)
+
 
 ## In-case module with USB-to-TTL converter
 
