@@ -55,6 +55,15 @@ At this point, `chronyc sources` should show the PTP refclock not being used.
 #? PTP                           0   0     0     -     +0ns[   +0ns] +/-    0ns
 ```
 
+We also need to enable the chrony-wait service:
+
+```
+sudo systemctl enable chrony-wait.service
+```
+
+This is neeed because the ts2phc services depends on the time-sync.target, which needs the chrony-wait
+service (or something similar) in order to work.
+
 ### ts2phc service
 
 Install the service file [ts2phc.service](files/ts2phc.service) into the `/etc/systemd/system/` directory.
@@ -174,6 +183,9 @@ Sep 22 11:19:00 halloumi bash[4310]:                 timeSource              0x2
 Sep 22 11:19:00 halloumi systemd[1]: ptp4l-gm.service: Deactivated successfully.
 Sep 22 11:19:00 halloumi systemd[1]: Finished ptp4l-gm.service - Change the settings of ptp4l to work as a grandmaster.
 ```
+
+TODO: instead of sleeping, we can repeatedly use phc_ctl cmp command to wait for the delta
+between the offset to reduce to enough.
 
 ### phc2sys service
 
