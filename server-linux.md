@@ -96,3 +96,50 @@ for example, `025713.00` means `02:57:13.00` UTC.
 After another 8 commas, there will be a field that should have the current UTC date;
 for example, `140923` means 14th Septemember 2023.
 
+## Network configuration
+
+TODO: NetworkManager causes problems; use systemd-networkd instead.
+Need to enable systemd-networkd-wait-online@enp1s0 and
+disable NetworkManager-wait-online.service.
+
+## CPU frequency
+
+On Fedora:
+
+```
+sudo dnf install kernel-tools
+```
+
+On Debian:
+
+```
+sudo apt install linux-cpupower
+```
+
+Discover available frequencies with
+
+```
+cpupower frequency-info -l -m
+```
+
+Also
+
+```
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
+```
+
+will show specific frequencies available.
+
+Set them all to a constant specific frequency:
+
+```
+sudo cpupower frequency-set --min 1.6Ghz --max 1.6GHz
+```
+
+TODO
+1. Test whether this makes a measureable difference.
+2. Make it start automatically with a systemd service.
+3. Should we also try to control CPU idle states?
+4. Should we try to tweak scheduling (e.g. isolated cores, CPU affinity etc)?
+
+
