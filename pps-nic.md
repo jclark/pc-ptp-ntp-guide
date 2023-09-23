@@ -74,7 +74,7 @@ and the red wire needs to be plugged into SDP0 or SDP1.
 This photo shows the OEM version of the i210-T1 with red attached to SDP0 and black attached
 to GND.
 
-![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/1c7e6b94-62c1-41f1-8697-64ddf9322a3c)
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/8109f07a-2dcd-4fe0-84c1-324fb8831460)
 
 
 ## i225
