@@ -25,7 +25,7 @@ which the BIOS could use to update itself.
 This shows a T740 with a cable attached to the i210, before plugging the i210 into the
 PCIe slot.
 
-![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/36502817-59e6-4420-87a9-bb10070366fd)
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/6a70a78c-2689-4d65-821c-a33f8cdb3929)
 
 ## Lenovo Tiny desktop
 
@@ -71,5 +71,5 @@ going from this breakout board to the PPS connector on the M.2 card.
 I've improvised a way to keep the i210 in place using a couple of pieces
 cut off the corner of a stripboard.
 
-![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/baf3fb0c-8c73-48d3-aa22-6b9aa61ddcf7)
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/cca38a8e-f6a0-4d8a-83d6-3c05725db2fd)
 
