@@ -29,7 +29,6 @@ are [available on eBay](https://www.ebay.com/itm/333619130232) for about $50 or 
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/936d8750-d2ce-48f6-a77c-d22ac8f9d105)
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/ff458374-a414-4c3a-ab8f-6c5a054f6114)
 
-
 ## ArduSimple simpleRTK2B M.2 ZED-F9P
 
 The [simpleRTK2B M.2](https://www.ardusimple.com/product/simplertk2b-m-2/) fits into a M.2 E-key slot, which is the kind of slot PCs have for Wifi cards.
@@ -47,6 +46,16 @@ Note that this needs a dual band antenna for best performance.
 
 ![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/9029f825-af84-4ebe-9e39-e6bc7f919eda)
 
+## ZED-F9T USB Dongle
+
+The GNSS OEM Store (in Latvia) sell a [USB dongle with a ZED-F9T](https://gnss.store/zed-f9t-timing-gnss-modules/108-16-elt0095.html) inside. It has two SMA connectors: one for the antenna
+and one for PPS output. The case is semi-transparent and has a PPS LED. There are two versions:
+one is L1-L2 dual band, and the other is L1-L5 dual band.
+
+It's quite bulky and is likely to block adjacent USB ports. I recommend using it with a short USB A 2.0 male to female extension cable.
+
+This option is very convenient and the ZED-F9T is the best available timing GPS receiver (as of 2023),
+so it's a good option, but it is expensive (€220).
 
 ## In-case module with USB-to-TTL converter
 
