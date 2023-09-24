@@ -257,7 +257,9 @@ If this is fixed, then to make use of it:
 
 A further variation here is not to use chrony.
 
-TODO: are there are dependencies that need fixing?
+TODO: We don't really want ts2phc.service to depend on network-online.
+Instead it needs to depend on the devices being available.
+We can udev rules to add a systemd tag to the relevant devices.
 
 ## Time of day from gpsd via chrony
 
