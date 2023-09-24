@@ -57,6 +57,10 @@ It's quite bulky and is likely to block adjacent USB ports. I recommend using it
 This option is very convenient and the ZED-F9T is the best available timing GPS receiver (as of 2023),
 so it's a good option, but it is expensive (€220).
 
+The antenna connecttor is the lower one in this photo.
+
+![image](https://github.com/jclark/pc-ptp-ntp-guide/assets/499966/f9debe6c-405c-4b8d-8106-fc305634375e)
+
 ## In-case module with USB-to-TTL converter
 
 This is the cheapest option. It combines 
