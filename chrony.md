@@ -120,7 +120,7 @@ The meaning of this line is as follows:
  * `/run/chrony.clk.ttyUSB0.sock` is the filename of the socket that chrony will create in order to
  receive information from gpsd; when gpsd starts reading from /dev/ttyX, it checks for the existence of the socket /run/chrony.clk.ttyX.sock; if this socket exists, then it will send the messages with the current date-time derived from messages received from the GPS over this socket
  * `offset 0` means that chrony should assume that there are 0 seconds delay between the instant when the second started and the instant when it receives the date-time message for that second through the socket; this is certainly the wrong value; we will figure out the right value below
-  * `poll 4` means samples are stored for a period of 2<sup>4</sup> seconds i.e. 16 seconds, before being filtered and used for the time; we will use this to get a better estimate for `offset``
+  * `poll 4` means samples are stored for a period of 2<sup>4</sup> seconds i.e. 16 seconds, before being filtered and used for the time; we will use this to get a better estimate for `offset`
  * `noselect` option means that this refclock is not going to be used as a time source on its own: it's too inaccurate for that. (Instead it's going to be used to supplement the pulse-per-second signal.)
 * `refid UART` named this refclock `UART` 
 
