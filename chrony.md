@@ -112,7 +112,7 @@ to check that gpsd is seeing the GPS. Use Ctrl-C to exit.
 Now add this line to /etc/chrony.conf:
 
 ```
-refclock SOCK /run/chrony.clk.ttyUSB0.sock delay 0.2 offset 0 poll 4 noselect refid UART
+refclock SOCK /run/chrony.clk.ttyUSB0.sock offset 0 delay 0.1 poll 0 noselect refid UART
 ```
 
 The meaning of this line is as follows:
@@ -120,7 +120,8 @@ The meaning of this line is as follows:
  * `/run/chrony.clk.ttyUSB0.sock` is the filename of the socket that chrony will create in order to
  receive information from gpsd; when gpsd starts reading from /dev/ttyX, it checks for the existence of the socket /run/chrony.clk.ttyX.sock; if this socket exists, then it will send the messages with the current date-time derived from messages received from the GPS over this socket
  * `offset 0` means that chrony should assume that there are 0 seconds delay between the instant when the second started and the instant when it receives the date-time message for that second through the socket; this is certainly the wrong value; we will figure out the right value below
-  * `poll 4` means samples are stored for a period of 2<sup>4</sup> seconds i.e. 16 seconds, before being filtered and used for the time; we will use this to get a better estimate for `offset`
+  * `delay 0.1` means that the difference the minimum offset and maximum offset is 0.1s
+  * `poll 0` means samples are used immediately rather than being stored and filtered (we don't need to store since we have `noselect`)
  * `noselect` option means that this refclock is not going to be used as a time source on its own: it's too inaccurate for that. (Instead it's going to be used to supplement the pulse-per-second signal.)
 * `refid UART` named this refclock `UART` 
 
@@ -154,7 +155,7 @@ The refclock lines now look like this:
 
 ```
 refclock PHC /dev/ptp0:extpps:pin=0 poll 0 width 0.1 delay 6e-8 precision 2e-8 refid PPS lock UART
-refclock SOCK /run/chrony.clk.ttyUSB0.sock delay 0.2 offset 0.216 poll 4 noselect refid UART
+refclock SOCK /run/chrony.clk.ttyUSB0.sock delay 0.1 offset 0.216 poll 0 noselect refid UART
 ```
 
 TODO: is it better to omit the `lock UART` from the PHC line and omit the `noselect` from the UART line?
@@ -165,10 +166,10 @@ Now we can restart chrony again:
 sudo systemctl restart chronyd
 ```
 
-The /run/chrony.clk.ttyX.sock feature was added in gpsd 3.25. Before that, it supported only a /run/chrony.ttyX.sock, which works only for PPS data. If you're using a version of gpsd that does not support /run/chrony.clk.ttyX.sock, then you can instead use the SHM 0 refclock.
+The /run/chrony.clk.ttyX.sock feature was added in gpsd 3.25. Before that, it supported only a /run/chrony.ttyX.sock, which works only for PPS data. If you're using a version of gpsd that does not support /run/chrony.clk.ttyX.sock, then you should instead use the SHM 0 refclock.
 
 ```
-refclock SHM 0 poll 3 offset 0.216 noselect refid UART
+refclock SHM 0 poll 0 delay 0.1 offset 0.216 noselect refid UART
 ```
 
 ## Hardware timestamping
