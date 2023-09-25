@@ -9,7 +9,7 @@ This page is written assuming [Fedora](fedora.md) as the OS.
 
 ## PPS input
 
-Chrony can work fine with just the PPS signal from the GPS: the pulse says exactly when a second starts; chrony can figure out which second it is from network sources. Make sure you have chrony set up in way similar to the default getting time from the network, typically using `pool` directive. 
+Chrony can works very well using just the PPS signal from the GPS: the pulse says exactly when a second starts; chrony can figure out which second it is from network sources. Make sure you have chrony set up in way similar to the default getting time from the network, typically using `pool` directive. 
 
 To use the PPS as a source of time, add this line to `/etc/chrony.conf`:
 
@@ -19,9 +19,9 @@ refclock PHC /dev/ptp0:extpps:pin=0 poll 0 width 0.1 delay 6e-8 precision 2e-8 r
 
 Here:
 
-* Usually the PHC (PTP Hardware Clock) refclock expects the PTP Hardware Clock to have been synchronized with PTP; the `extpps` option enables a different mode of operation, in which it reads thes timestamps of pulses on a pin on the PTP hardware clock
-* `/dev/ptp0` is the device for the PTP hardware clock; ee [Verify PPS](service-linux.md#verify-pps) section for how to determine this
-* `pin=0` means to use pin 0; this is the physical pin that the PPS signal is connected to
+* `/dev/ptp0` is the device for the PHC (PTP hardware clock); see [Verify PPS](service-linux.md#verify-pps) section for how to determine this
+* the `extpps` option enables a mode of operation in which chrony itself reads the timestamps of pulses on a pin on the PHC; without this option, chrony expects the PHC to have been synchronized to the correct time by another process and just reads the time from the PHC
+* `pin=0` says to use pin 0; this is the physical pin that the PPS signal is connected to
 * `poll 0` says to use samples immediately rather than store them (since the jitter should be very small)
 * `width 0.1` is the pulse width in seconds; see [Pulse Width](service-linux.md#pulse-width) section for how to determine this
 * `delay 6e-8` specifies a delay of 60ns; this is suitable for a GPS with an accuracy of 30ns
@@ -63,7 +63,8 @@ It should should a line starting with `#* PPS`. This means it has successfully s
 
 ## Using serial connection from GPS
 
-Connecting up the serial output from the GPS allows chrony to work even when there is no connection to any other NTP server.
+Connecting up the serial output from the GPS allows chrony to work even when there is no connection to any other NTP server. Unless you have this requirement, I do not recommend doing this: a serial connection to GPS
+output is generally less precise and more troublesome than using the internet with NTP.
 
 Install gpsd:
 
@@ -201,6 +202,9 @@ server 192.168.1.2 minpoll 0 maxpoll 0 xleave port 319
 hwtimestamp enp1s0 rxfilter ptp
 ptpport 319
 ```
+
+You can also add `extfield F323` to the `server` line to enable chrony's support for
+[frequency transfer in NTP](https://mlichvar.fedorapeople.org/ntp-freq-transfer/).
 
 Chrony only supports NTP-over-PTP between server and client running the same versions of chrony.
 
