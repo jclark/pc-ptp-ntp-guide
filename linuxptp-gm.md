@@ -127,11 +127,7 @@ You can either edit the existing configuration file or copy [this one](files/ptp
 in the form `[enp1s0]`. An empty section tells LinuxPTP to run on that interface.
 * We need to make sure LinuxPTP runs as a server (grandmaster).
    * The Fedora ptp4l.cong has `slaveOnly 1`; we need to remove that or change it to `0`.
-   * We also need to add `masterOnly 1`; with LinuxPTP 4.0 you can use `serverOnly 1`.
-
-TODO: Not sure what the right thing to do here is. I think we need to prevent `ptp4l` from trying to 
-control the PHC, since that is likely to interfere with `ts2phc`. One possibility is to use `masterOnly 1`.
-Another possibility is to use `BMCA master`.
+   * We also need to add `masterOnly 1`; with LinuxPTP 4.0 you can use `serverOnly 1` (the point of this is to prevent `ptp4l` from trying to control the PHC, since that is likely to interfere with `ts2phc`)
 
 Then enable and start ptp4l:
 
@@ -229,6 +225,8 @@ sudo ptp4l -i enp1s0 -s -q -m
 ```
 
 If this says `increasing tx_timestamp_timeout may correct this issue`, then add a `--tx_timestamp_timeout=10`.
+It should say `selected best master clock` followed by an identifier with 3 hex numbers separated by dots;
+this is derived from the MAC address on the server.
 After a while, it should show consistently small offsets (less than 100).
 
 On Fedora, you will need to allow PTP through the firewall on the client.
