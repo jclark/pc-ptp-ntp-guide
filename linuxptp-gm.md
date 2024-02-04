@@ -188,7 +188,7 @@ between the offset to reduce to enough.
 This service feeds PPS samples from the PHC into a shared memory segment where chrony can read them.
 
 The Debian phc2sys service file isn't suitable, so on Debian copy the
-[ptp4sys.service](files/phc2sys.service) file into the `/etc/systemd/system` directory.
+[phc2sys.service](files/phc2sys.service) file into the `/etc/systemd/system` directory.
 
 Now copy the [file specifying the phc2sys options](files/phc2sys.sysconfig) into `/etc/sysconfig/phc2sys`
 on Fedora and `/etc/default/phc2sys` on Debian.
