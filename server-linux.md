@@ -1,4 +1,4 @@
-# Time server Linux preqrequisites
+# Time server Linux prerequisites
 
 It's a good idea to make sure that everything is working at the kernel level before trying to set up NTP or PTP.
 Part of this is determining the device names that the Linux kernel is using for our hardware.

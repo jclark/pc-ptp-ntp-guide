@@ -34,7 +34,7 @@ Hardware selection and assembly:
 * more about [PTM](ptm.md) 
 
 Server software configuration:
-* [Linux prequisites](linux-server.md) - make sure everything is working at the Linux kernel level
+* [Linux prequisites](server-linux.md) - make sure everything is working at the Linux kernel level
 * [chrony](chrony.md) - how to set up chrony with gpsd
 * [Linux PTP](linuxptp-gm.md) - how to configure Linux PTP as a PTP server (grandmaster)
 
